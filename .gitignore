@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+
+# Env / secrets
+.env
+.env.local
+.env.*.local
+
+# Builds
+dist
+build
+coverage
+*.tsbuildinfo
+
+# Logs
+logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+
+# Test / cache
+.turbo
+.cache
+.tmp
+temp
+
+# Prisma
+prisma/*.db
+prisma/*.db-journal
+
+# Uploads / local storage (later)
+uploads
+.local
