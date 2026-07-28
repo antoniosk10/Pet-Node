@@ -1,0 +1,15 @@
+{
+  "name": "common",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "concurrently -k -s first \"npm run web:dev\" \"npm run api:dev\"",
+    "web:dev": "cd apps/web && npm run dev",
+    "api:dev": "cd apps/api && npm run start:dev",
+    "typecheck": "tsc -b --noEmit"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.4"
+  }
+}
