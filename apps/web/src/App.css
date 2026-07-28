@@ -1,0 +1,53 @@
+.page {
+  max-width: 40rem;
+  margin: 0 auto;
+  padding: 3rem 1.5rem;
+}
+
+.brand {
+  margin: 0;
+  font-size: 2.5rem;
+  letter-spacing: -0.03em;
+}
+
+.subtitle {
+  margin: 0.5rem 0 2rem;
+  color: #5c6570;
+}
+
+.status {
+  padding: 1.25rem 0;
+  border-top: 1px solid #d8dde3;
+}
+
+.status h2 {
+  margin: 0 0 0.75rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #5c6570;
+}
+
+.ok {
+  margin: 0;
+  color: #1f7a45;
+  font-weight: 600;
+}
+
+.error {
+  margin: 0;
+  color: #b42318;
+  font-weight: 600;
+}
+
+.muted {
+  color: #5c6570;
+  font-weight: 400;
+}
+
+.endpoint {
+  margin: 1rem 0 0;
+  font-size: 0.875rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
