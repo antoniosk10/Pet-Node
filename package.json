@@ -1,13 +1,17 @@
 {
-  "name": "common",
+  "name": "pulsedesk",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently -k -s first \"npm run web:dev\" \"npm run api:dev\"",
-    "web:dev": "cd apps/web && npm run dev",
-    "api:dev": "cd apps/api && npm run start:dev",
-    "typecheck": "tsc -b --noEmit"
+    "dev": "concurrently -k -s first \"npm run web:dev\" \"npm run api:dev\" \"npm run compose:up\"",
+    "web:dev": "npm --prefix apps/web run dev",
+    "api:dev": "npm --prefix apps/api run start:dev",
+    "compose:up": "docker compose up",
+    "compose:down": "docker compose down",
+    "compose:ps":"docker compose ps",
+    "typecheck": "npm run typecheck --prefix apps/api && npm run typecheck --prefix apps/web",
+    "lint": "npm run lint --prefix apps/api && npm run lint --prefix apps/web"
   },
   "devDependencies": {
     "concurrently": "^10.0.4"
