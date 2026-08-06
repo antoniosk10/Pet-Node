@@ -11,7 +11,7 @@ type HealthResponse = {
   timestamp: string
 }
 
-const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3000'
+const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3003'
 
 function App() {
   const [health, setHealth] = useState<HealthState>({ status: 'loading' })
