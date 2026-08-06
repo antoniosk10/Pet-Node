@@ -1,57 +1,57 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import { useEffect, useState } from 'react';
+import './App.css';
 
 type HealthState =
   | { status: 'loading' }
   | { status: 'ok'; timestamp: string }
-  | { status: 'error'; message: string }
+  | { status: 'error'; message: string };
 
 type HealthResponse = {
-  status: string
-  timestamp: string
-}
+  status: string;
+  timestamp: string;
+};
 
-const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3003'
+const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3003';
 
 function App() {
-  const [health, setHealth] = useState<number>({ status: 'loading' })
+  const [health, setHealth] = useState<HealthState>({ status: 'loading' });
 
   useEffect(() => {
-    const controller = new AbortController()
+    const controller = new AbortController();
 
     async function ping() {
       try {
         const response = await fetch(`${apiUrl}/health`, {
           signal: controller.signal,
-        })
+        });
 
         if (!response.ok) {
-          throw new Error(`HTTP ${response.status}`)
+          throw new Error(`HTTP ${response.status}`);
         }
 
-        const data = (await response.json()) as HealthResponse
+        const data = (await response.json()) as HealthResponse;
 
         if (data.status !== 'ok' || typeof data.timestamp !== 'string') {
-          throw new Error('Unexpected health response')
+          throw new Error('Unexpected health response');
         }
 
-        setHealth({ status: 'ok', timestamp: data.timestamp })
+        setHealth({ status: 'ok', timestamp: data.timestamp });
       } catch (error) {
         if (controller.signal.aborted) {
-          return
+          return;
         }
 
         const message =
-          error instanceof Error ? error.message : 'Failed to reach API'
+          error instanceof Error ? error.message : 'Failed to reach API';
 
-        setHealth({ status: 'error', message })
+        setHealth({ status: 'error', message });
       }
     }
 
-    void ping()
+    void ping();
 
-    return () => controller.abort()
-  }, [])
+    return () => controller.abort();
+  }, []);
 
   return (
     <main className="page">
@@ -80,7 +80,7 @@ function App() {
         <p className="endpoint muted">{apiUrl}/health</p>
       </section>
     </main>
-  )
+  );
 }
 
-export default App
+export default App;
