@@ -14,7 +14,7 @@ type HealthResponse = {
 const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:3003'
 
 function App() {
-  const [health, setHealth] = useState<HealthState>({ status: 'loading' })
+  const [health, setHealth] = useState<number>({ status: 'loading' })
 
   useEffect(() => {
     const controller = new AbortController()
