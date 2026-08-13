@@ -1,15 +1,19 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
-import { join } from 'node:path';
-import { HealthModule } from './health/health.module';
+import { HealthModule } from './health/health.module.js';
+import { PrismaModule } from './prisma/prisma.module.js';
+import { findEnv } from '../findEnv.js';
+
+const envPath = findEnv();
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      envFilePath: [join(__dirname, '..', '..', '..', '.env')],
+      ...(envPath ? { envFilePath: envPath } : {}),
     }),
     HealthModule,
+    PrismaModule,
   ],
   controllers: [],
   providers: [],

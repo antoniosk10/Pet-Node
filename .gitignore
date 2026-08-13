@@ -39,7 +39,7 @@ temp
 # Prisma
 prisma/*.db
 prisma/*.db-journal
-
+generated
 # Uploads / local storage (later)
 uploads
 .local
