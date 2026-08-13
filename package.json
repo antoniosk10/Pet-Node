@@ -1,5 +1,8 @@
 {
   "name": "pulsedesk",
+  "workspaces": [
+    "apps/*"
+  ],
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -11,7 +14,12 @@
     "compose:down": "docker compose down",
     "compose:ps": "docker compose ps",
     "typecheck": "npm run typecheck --prefix apps/api && npm run typecheck --prefix apps/web",
-    "lint": "npm run lint --prefix apps/api && npm run lint --prefix apps/web"
+    "lint": "npm run lint --prefix apps/api && npm run lint --prefix apps/web",
+    "add:api": "npm install -w pulsedesk-api",
+    "add:web": "npm install -w pulsedesk-web",
+    "remove:api": "npm uninstall -w pulsedesk-api",
+    "remove:web": "npm uninstall -w pulsedesk-web",
+    "postinstall": "npx -w pulsedesk-api prisma generate"
   },
   "devDependencies": {
     "concurrently": "^10.0.4"
