@@ -12,8 +12,7 @@ jobs:
         with:
           node-version: 20
           cache: npm   # опционально, ускоряет install
-      - run: npm install --prefix apps/api
-      - run: npm install --prefix apps/web
+      - run: npm install
       - run: npm run lint
       - run: npm run typecheck
       - run: npm run build --prefix apps/api
